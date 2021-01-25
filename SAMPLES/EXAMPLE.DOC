@@ -1,0 +1,60 @@
+
+The sample files are broken down into 1 .PRG file per category.
+
+PRG Files
+----------
+S3SCREEN.PRG                Fancy screen handling
+S3META.PRG                  Metafunctions
+S3META2.PRG                 Metafunctions using BUNGEE() menu
+S3POPUP.PRG                 Popups
+S3MENU.PRG                  Menus
+S3GET.PRG                   Get system enhancements
+S3MOUSE.PRG                 Mouse and event function usage
+S3LOOKUP.PRG                Lookup functions
+S3LASER.PRG                 LaserJet functions
+S3HELP.PRG                  Online help
+S3PROG.PRG                  Progress bars
+S3FILE.PRG                  File and directory functions
+S3COLORS.PRG                SuperLib Color set handling
+S3BROWSE.PRG                Browses (tbrowse)
+
+Data
+----
+
+S3SAMPLE.DBF                Sample Names type DBF file
+S3SAMPLE.DBT                Sample Names type DBT file
+
+S3SAMPLE.SDF                Sample Names type SDF file for S3BROWSE.PRG
+S3SAMPLE.ASC                Sample Names type ASCII delim file for S3BROWSE.PRG
+
+S3HELP.DBF                  Online help samples DBF
+S3HELP.DBT                  Online help samples DBT
+S3HELP.NTX                  Online help samples NTX
+
+S3STATES.DBF                Lookup table used in S3LOOKUP.PRG
+S3PROD.DBF                  Lookup table used in S3LOOKUP.PRG
+
+S3COLORS.DBF                Color set file
+
+
+Creation
+--------
+
+To create an executable for any of the given .PRGs, where <prgfile>
+refers to the prg and <objfile> refers to the compiled object file:
+(add paths to Clipper and Extend and Super35 libraries as needed)
+
+A. COMPILE
+
+  Clipper <prgfile> -n -w
+
+B. LINK
+
+  1   blinker
+
+      blinker fi <objfile> alloc super35
+
+  2   rtlink (clipper 5.0 version)
+
+      rtlink fi <objfile> lib super35
+

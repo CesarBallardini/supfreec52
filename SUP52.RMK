@@ -1,0 +1,251 @@
+// This .RMK file will not work for you without modification of the
+// source and destination paths. Read the comments to see where to change.
+//
+// The following are also presumed:
+//     CLIPPER 5.2x is on your path
+//     LIB.EXE is on your path
+//     MSC 5.0 or above is on your path
+//     MASM 5.1 or above is on your path
+//
+// You'll need to edit these values to reflect the paths the source
+// and object files are on:
+SOURCEPATH="\SUPER35\SOURCE"
+OBJECTPATH="\SUPER35\OBJS52"
+//
+//
+makepath[.prg] = $(SOURCEPATH)
+makepath[.c]   = $(SOURCEPATH)
+makepath[.asm] = $(SOURCEPATH)
+makepath[.obj] = $(OBJECTPATH)
+//
+//
+// By default, this .RMK file uses the Clipper 5.2 compiler.
+// If using 5.01, you'll need to remove the -es2 CLIPPER switch below.
+.prg.obj:
+   CLIPPER $** -n -w -es2 -o$@
+   if not errorlevel 1 LIB SUP3552.LIB -+$@;
+
+//   CLIPPER $** -n -w -es2 -o$(OBJECTPATH)\$*.obj
+// Presumes MASM version 5.1 or above on your path
+.asm.obj:
+   MASM $** $@;
+   if not errorlevel 1 LIB SUP3552.LIB -+$@;
+
+// Presumes MSC version 5.0 or above on your path
+.c.obj:
+   CL /c /AL /Zl /Oalt /FPa /Gs /Fo$@ $**
+   if not errorlevel 1 LIB SUP3552.LIB -+$@;
+
+r_hcode.obj:      r_hcode.prg
+r_printr.obj:     r_printr.prg
+r_quikr.obj:      r_quikr.prg
+r_report.obj:     r_report.prg
+s_1label.obj:     s_1label.prg
+s_2dbrz.obj:      s_2dbrz.prg
+s_super.obj:      s_super.prg
+s_aaskip.obj:     s_aaskip.prg
+s_abort.obj:      s_abort.prg
+s_achoi.obj:      s_achoi.prg
+s_addsp.obj:      s_addsp.prg
+s_aextra.obj:     s_aextra.prg
+s_aftype.obj:     s_aftype.prg
+s_akount.obj:     s_akount.prg
+s_aleng.obj:      s_aleng.prg
+s_allbut.obj:     s_allbut.prg
+s_amsg.obj:       s_amsg.prg
+s_amsort.obj:     s_amsort.prg
+s_amstat.obj:     s_amstat.prg
+s_append.obj:     s_append.prg
+s_appt.obj:       s_appt.prg
+s_arrang.obj:     s_arrang.prg
+s_ascii.obj:      s_ascii.prg
+s_astats.obj:     s_astats.prg
+s_at2c.obj:       s_at2c.prg
+s_att.obj:        s_att.prg
+s_bdelim.obj:     s_bdelim.prg
+s_begend.obj:     s_begend.prg
+s_bigel.obj:      s_bigel.prg
+s_blanks.obj:     s_blanks.prg
+s_bldar.obj:      s_bldar.prg
+s_bldbf.obj:      s_bldbf.prg
+s_bldndx.obj:     s_bldndx.prg
+s_bom.obj:        s_bom.prg
+s_boxes.obj:      s_boxes.prg
+s_boyear.obj:     s_boyear.prg
+s_brsdf.obj:      s_brsdf.prg
+s_build.obj:      s_build.prg
+s_bxx.obj:        s_bxx.prg
+s_calck.obj:      s_calck.prg
+s_calcvw.obj:     s_calcvw.prg
+s_centr.obj:      s_centr.prg
+s_clab.obj:       s_clab.prg
+s_clrfun.obj:     s_clrfun.prg
+s_cls.obj:        s_cls.prg
+s_colpik.obj:     s_colpik.prg
+s_copy.obj:       s_copy.prg
+s_copyf.obj:      s_copyf.prg
+s_crunch.obj:     s_crunch.prg
+s_ctrlw.obj:      s_ctrlw.prg
+s_cvtdel.obj:     s_cvtdel.prg
+s_datcal.obj:     s_datcal.prg
+s_datek.obj:      s_datek.prg
+s_datvw.obj:      s_datvw.prg
+s_daysin.obj:     s_daysin.prg
+s_dbarr.obj:      s_dbarr.prg
+s_dbstat.obj:     s_dbstat.prg
+s_delar.obj:      s_delar.prg
+s_delet.obj:      s_delet.prg
+s_doyear.obj:     s_doyear.prg
+s_dpops.obj:      s_dpops.prg
+s_dtdiff.obj:     s_dtdiff.prg
+s_dtow.obj:       s_dtow.prg
+s_dup.obj:        s_dup.prg
+s_duph.obj:       s_duph.prg
+s_edit.obj:       s_edit.prg
+s_editm.obj:      s_editm.prg
+s_editmv.obj:     s_editmv.prg
+s_edpict.obj:     s_edpict.prg
+s_endsw.obj:      s_endsw.prg
+s_enhan.obj:      s_enhan.prg
+s_evalq.obj:      s_evalq.prg
+s_export.obj:     s_export.prg
+s_fform.obj:      s_fform.prg
+s_fields.obj:     s_fields.prg
+s_filein.obj:     s_filein.prg
+s_filer.obj:      s_filer.prg
+s_fillar.obj:     s_fillar.prg
+s_fm2n.obj:       s_fm2n.prg
+s_fm2p.obj:       s_fm2p.prg
+s_forml.obj:      s_forml.prg
+s_freadl.obj:     s_freadl.prg
+s_freq.obj:       s_freq.prg
+s_fulld.obj:      s_fulld.prg
+s_gened.obj:      s_gened.prg
+s_genva.obj:      s_genva.prg
+s_getcal.obj:     s_getcal.prg
+s_getdat.obj:     s_getdat.prg
+s_getdfp.obj:     s_getdfp.prg
+s_getkey.obj:     s_getkey.prg
+s_getmany.obj:    s_getmany.prg
+s_global.obj:     s_global.prg
+s_globr.obj:      s_globr.prg
+s_hardc.obj:      s_hardc.prg
+s_help.obj:       s_help.prg
+s_helpm.obj:      s_helpm.prg
+s_hplas.obj:      s_hplas.prg
+s_init.obj:       s_init.prg
+s_inlook.obj:     s_inlook.prg
+s_isload.obj:     s_isload.prg
+s_ispart.obj:     s_ispart.prg
+s_isvalf.obj:     s_isvalf.prg
+s_kbdesc.obj:     s_kbdesc.prg
+s_list.obj:       s_list.prg
+s_ljust.obj:      s_ljust.prg
+s_lotmen.obj:     s_lotmen.prg
+s_mailm.obj:      s_mailm.prg
+s_makeb.obj:      s_makeb.prg
+s_mchoi.obj:      s_mchoi.prg
+s_meas.obj:       s_meas.prg
+s_menuv.obj:      s_menuv.prg
+s_messyn.obj:     s_messyn.prg
+s_mfld.obj:       s_mfld.prg
+s_mfldt.obj:      s_mfldt.prg
+s_modify.obj:     s_modify.prg
+s_moose.obj:      s_moose.prg
+s_msg.obj:        s_msg.prg
+s_mulmyn.obj:     s_mulmyn.prg
+s_nbr2st.obj:     s_nbr2st.prg
+s_nkey.obj:       s_nkey.prg
+s_notdup.obj:     s_notdup.prg
+s_nozdiv.obj:     s_nozdiv.prg
+s_oner.obj:       s_oner.prg
+s_openin.obj:     s_openin.prg
+s_paths.obj:      s_paths.prg
+s_pcsel.obj:      s_pcsel.prg
+s_picknd.obj:     s_picknd.prg
+s_plsw.obj:       s_plsw.prg
+s_popdir.obj:     s_popdir.prg
+s_popex.obj:      s_popex.prg
+s_popord.obj:     s_popord.prg
+s_popr.obj:       s_popr.prg
+s_popupk.obj:     s_popupk.prg
+s_popvw.obj:      s_popvw.prg
+s_pread.obj:      s_pread.prg
+s_prnpor.obj:     s_prnpor.prg
+s_prnt.obj:       s_prnt.prg
+s_prntf.obj:      s_prntf.prg
+s_prog.obj:       s_prog.prg
+s_proper.obj:     s_proper.prg
+s_pseek.obj:      s_pseek.prg
+s_pulldn.obj:     s_pulldn.prg
+s_purgem.obj:     s_purgem.prg
+s_query.obj:      s_query.prg
+s_readrs.obj:     s_readrs.prg
+s_rjust.obj:      s_rjust.prg
+s_rmenu2.obj:     s_rmenu2.prg
+s_rread.obj:      s_rread.prg
+s_saddr.obj:      s_saddr.prg
+s_scmod.obj:      s_scmod.prg
+s_screen.obj:     s_screen.prg
+s_scroll.obj:     s_scroll.prg
+s_search.obj:     s_search.prg
+s_setcen.obj:     s_setcen.prg
+s_setcol.obj:     s_setcol.prg
+s_setdat.obj:     s_setdat.prg
+s_setex.obj:      s_setex.prg
+s_setkey.obj:     s_setkey.prg
+s_sfilok.obj:     s_sfilok.prg
+s_smal.obj:       s_smal.prg
+s_smalk.obj:      s_smalk.prg
+s_smgets.obj:     s_smgets.prg
+s_snetu.obj:      s_snetu.prg
+s_sreclo.obj:     s_sreclo.prg
+s_stan.obj:       s_stan.prg
+s_starts.obj:     s_starts.prg
+s_stod.obj:       s_stod.prg
+s_stretc.obj:     s_stretc.prg
+s_strpat.obj:     s_strpat.prg
+s_strpul.obj:     s_strpul.prg
+s_subplu.obj:     s_subplu.prg
+s_sumav.obj:      s_sumav.prg
+s_tabmen.obj:     s_tabmen.prg
+s_tag.obj:        s_tag.prg
+s_taga.obj:       s_taga.prg
+s_tagam.obj:      s_tagam.prg
+s_tagf.obj:       s_tagf.prg
+s_time.obj:       s_time.prg
+s_todo.obj:       s_todo.prg
+s_trueva.obj:     s_trueva.prg
+s_unbox.obj:      s_unbox.prg
+s_uniqf.obj:      s_uniqf.prg
+s_unsel.obj:      s_unsel.prg
+s_var2.obj:       s_var2.prg
+s_varlen.obj:     s_varlen.prg
+s_viewp.obj:      s_viewp.prg
+s_vmemo.obj:      s_vmemo.prg
+s_vview.obj:      s_vview.prg
+s_wild.obj:       s_wild.prg
+s_womon.obj:      s_womon.prg
+s_woyear.obj:     s_woyear.prg
+s_writef.obj:     s_writef.prg
+s_xbxx.obj:       s_xbxx.prg
+curd.obj:         curd.prg
+s_mmemo.obj:      s_mmemo.prg
+s_bungee.obj:     s_bungee.prg
+s_bungde.obj:     s_bungde.prg
+s_oldmod.obj:     s_oldmod.prg
+s_old.obj:        s_old.prg
+s_formu.obj:      s_formu.prg
+
+
+//--if you do not have MASM, comment out this section
+cdd.obj:        cdd.asm
+isprn.obj:      isprn.asm
+s_mouse.obj:    s_mouse.asm
+s_shift.obj:    s_shift.asm
+
+//--if you do not have a C compiler, comment out this section
+between.obj:    between.c
+s_scrbuf.obj:   s_scrbuf.c
+nextls.obj:     nextls.c
+
