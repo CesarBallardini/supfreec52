@@ -1,0 +1,285 @@
+                                 SUPER.LIB
+                            Super.Lib Standard
+                        for Clipper Summer 87, 5.0
+                          Version 1.51 (June 1990)
+
+                      G E N E R A L    R E F E R E N C E
+
+
+           * see SUPER.FUN, SUPER_C.FUN for function list and usage
+           * see ORDER.DOC for ordering information
+           * see TODATE.DOC for chronological list of changes
+
+      Super.Lib Library copyright (C) 1989,1990 by Garry Prefontaine.
+      All rights reserved.
+
+      Specifications subject to change without notice.
+
+      ------------------------ Introduction -----------------------------
+
+      Super.Lib Library is a collection of Clipper Functions specifically
+      for handling data. They were designed with the following (optimistic)
+      guidelines:
+
+        1. Ease of use. Keep parameters to a minimum, and optional.
+        2. Data independance. Work with any datafile, anywhere, anytime.
+        3. Clean, attractive menu driven interface to the job at hand.
+        4. Drop-in to existing applications, requiring little or no setup.
+        5. Require no change in programming style by the user.
+        6. Leave things as found (colors, screens, etc)
+        7. Variable declared PRIVATE unless PUBLIC
+        8. Memory variables prefaced with 'm->' to avoid field conflicts
+
+      They don't necessarily succeed in all of these things, but nobody's
+      perfect.
+
+      The library was built from the top down, starting with the major
+      functions and adding building block functions commonly shared by
+      the major functions. It has a particular scope and theme into which
+      most of the functions fall, and functions have not just been included
+      to boost a function count.
+
+      The library does not even attempt to be all things to all people.
+      The most I could hope for is that it provides 'some solutions for
+      some people', or at least 'some partial solutions for some people'.
+
+      The best way to get to know the library, is to compile, link and
+      study the file SF.PRG.  SF is an all-purpose datafile handler that
+      will do everything from Create/Modify structure to Browsing a file
+      to Querying and Printing a file. SF.PRG makes use of most of the
+      metafunctions, and should give a pretty good idea of their scope.
+
+
+      ------------------------ License ----------------------------------------
+
+      You are granted the right to use this program on a trial basis for
+      as long as you like.
+
+      Registration is required prior to use of Super.Lib Library in
+      distributed executable programs.
+
+      Super.Lib Library may not be incorporated into other Libraries.
+
+      I encourage you to upload the shareware version of the library to
+      bulletin boards you frequent, as long as the full shareware version
+      and all shareware files are uploaded.
+
+
+      ------------------------ Registration -----------------------------------
+
+      See ORDER.DOC for ordering details.
+
+      Registration entitles you to a full Clipper/C/ASM source code for
+      Norton Guide datafile, 24 hour Super.Lib Support BBS access ,
+      notification of additional Super.Lib products when available,
+      and use of the library in distributed executable applications royalty
+      free.
+
+      Registration does not entitle you to distribute, sell or even give
+      away the library itself ,the source code, portions of the
+      library or source code, or modified copies of the library or
+      source code. You may not use the library to create another
+      library which you then distribute, for profit or not.
+      In short, any portion of the library going FROM you TO anyone else
+      must be in compiled executable format (.EXE), and may not be in
+      source code or object format.
+
+      --------------------Super.Lib Professional-----------------------------
+
+      Super.lib Professional, a new product from Functional Software
+      is now available. This is a commercial product, and is not
+      available as shareware.
+
+      Most of the Metafunctions  have been enhanced considerably, and
+      numerous NEW functions have been added, both small and large.
+
+      Some of my favorite enhancements:
+
+      BUILDEX point and shoot expression builder. Build expressions
+      like left(FNAME+LNAME,30)+','+MI.  With hooks into QUERY, BLDNDX
+      (index builder) and Super Report Writer.
+
+      VIEWPORT data entry engine. Pass arrays for fields, field
+      descriptions, pictures, valids, lookups, display/edit. Multiple
+      movement,search,view and editing options. Goes far beyond the
+      DOITALL function in Superfunction Standard. End users love it!
+
+      QUERY now handles: memo fields, complex expressions (BUILDEX),
+      spaces as comparison values, wildcard matching, startswith,
+      endswith and does not contain operators.
+
+      PRNPORT allows user to select printer port. Hooked into the
+      form letters, labels, listing and other Superfunction routines
+      that output to the printer.
+
+      TODOLIST, scroll a subset of a DBF with SMALLS, SEARCHME mini
+      query, BLDNDX complex index builder, FREQANAL frequency
+      analysis, TIMEPER time-sensitive DBF analysis, APPENDIT intelligent
+      APPEND FROM replacement ,POPUP CALCULATOR and CALENDER, delete and
+      pack system DBFs (queries, forms) with PURGEM, many new DATE and
+      STRING functions, no calls to Clipper internals, Blinker-able,
+      Clipper 5.0 compatible.
+
+      Attention has also been paid to date sensitive operations, and
+      all date formats (ANSI-GERMAN-FRENCH-BRITISH-ITALIAN-AMERICAN)
+      are supported.
+
+      REPORTER. The Super Report Writer is a column based, 100% Clipper
+      code, linkable Report Writer intended as a CREATE REPORT replacement
+      and superset.
+
+        - saves report definitions to a DBF file.
+        - up to 34 columns as field names or complex expressions.
+        - user definable column widths, column titles, column separator
+          characters, line separator characters, totals underline
+          characters , picture, page dimensions and others
+        - Major and Minor groups, subtotals, totals and grand totals
+        - full or summary report
+        - print against QUERY or TAGGED records
+        - free form headers and footers 1-9 lines
+        - print to printer or file, pause during printing, restart
+          from page #
+
+      and finally, the library comes with...
+      100+ page printed manual, upgrade guide for 1.50 users, Norton
+      Guide database, 1 year support, 24 hour BBS access, and ... FULL
+      SOURCE CODE!!
+
+      See ORDER.DOC for ordering details.
+
+
+      ------------------------ Disclaimer -------------------------------------
+     
+      Functional Software distributes these functions solely on an "as is"
+      basis and offers no warranties at all.
+
+      Functional Software shall not bear any liability or responsibility to
+      any user or entity with respect to any liability, loss or
+      damage caused, or alleged to be caused directly, or indirectly
+      by the functions contained in this product, including but not
+      limited to interruption of services, loss of business or
+      anticipatory profits or consequential damages resulting from
+      the use or operation of any of the functions contained in this
+      product.
+
+      Functional Software makes no warranties, either expressed or implied
+      regarding this software product, it's merchantibility and/or
+      it's fitness for a particular purpose. The user agrees that
+      Functional Software shall not be held liable for any consequential
+      damages, even if Functional Software has been advised of the possibility
+      of such damages.
+
+      By using any of the functions contained in this library, you
+      acknowledge your agreement with all of the above conditions.
+
+      ------------------- Linking Super.Lib Library ---------------------
+
+      Where <program> refers to your OBJ file(s) ,<other libs>
+      refers to other Libraries you may wish to use, and
+
+      Turbo Link (Tlink) :
+      TLINK <program>,,,clipper + extend + <other libs> +  super
+
+      Microsoft Link    :
+      LINK <program>,,,clipper,extend,<other libs>,super /NOE /SE:512
+
+      Plink86           :
+      PLINK86 fi <program> lib clipper,<other libs>,super,extend
+
+      BLINKER           :
+      BLINKER fi %1 lib super,clipper,extend
+
+      Only those functions actually called by your prg - and any they call -
+      will be included in your EXE. The metafunctions will  be big - usually
+      5-10K.
+
+     --------------Video Compatibility -----------------------------------
+
+     Super.Lib Library uses a few direct video routines,
+     for fast screen writing. As such, it will only work with IBM (tm)
+     PC compatible computers. It has been tested on Mono, CGA and
+     EGA adaptors, although some CGA adaptors will display 'snow'.
+
+     -------------------- Colors scheme for this library -------------------
+
+      This is not the perfect color scheme. It is the one this library runs
+      on. Several global color variables are used by the functions. These are:
+
+                c_normcol       -       For normal input/output
+                c_normmenu      -       For normal 'menu to' operations
+                c_popcol        -       For popup box colors
+                c_popmenu       -       For popup box menus
+                c_frame         -       Frame string ("ÚÄ¿³ÙÄÀ³ ")
+                c_shadatt       -       Shadow color attribute (numeric)
+                c_shadpos       -       Shadow position (0,1,3,7,9)
+                c_xplode        -       Logical - explode windows?
+
+      All are of the format "f/b,f/b,,,f/b"  (f-foreground b-background)
+
+      The function INITCOL() will set these colors, and is called if they
+      have not already been set.The function INITSUP() is used to initialize
+      everything needed by the Library. Initsup() calls initcol() if needed.
+
+      The function SETCOLORS() allows interactive setting of these colors.
+      The variables are stored in COLORS.MEM - which is created if needed.
+      If COLORS.MEM is not present, default colors are used.
+
+       ------- Calling Super.Lib with related files -------------
+
+       Many of the Super.Lib functions will work with a many-to-one relation.
+       When passing the array of field names, place the child fields in
+       the array as "alias->field"
+
+       i.e.
+               declare customer[10]
+               customer[1]="LNAME"
+               customer[2]="FNAME"
+               ....
+               ....
+               customer[9]="AGENT->AGENTNAME"
+               customer[10]="AGENT->ADDRESS"
+
+       query(), lister(), doitall(),lookfld(),formletr(),smalls() are some
+       of the functions which allow this.
+
+       One-to-many relations are not supported.
+
+      ------------------- Multiuser ---------------------------------------
+
+      The library has NOT been tested under a multiuser environment, and no
+      attention has been paid to this aspect. I do not expect to have such an
+      environment set up any time real soon, and so do not expect this library
+      to be multiuser any time real soon.
+
+      ------------------- CLIPPER 5.0--------------------------------------
+
+      Super.Lib is now compatible with Clipper 5.0 (pre-release 06-29-1990)
+      As of this writing, there are a few incompatibilities between
+      Clipper S87 and Clipper 5.0. I've worked around these known
+      incompatibilities. The .PRGs will compile and link with 5.0 and
+      RTLINK. The .EXEs will run. My intention at present is to keep
+      the library compatible with both Summer 87 and 5.0 versions of
+      Clipper.
+
+      Note: It is necessary to re-compile the source code with Clipper 5.0
+      in order for the library to work with Clipper 5.0.
+
+      --------------------- Trademarks --------------------------------------
+     
+      PLINK86 & PLINK86plus are Trademarks of Phoenix Technologies, Ltd.
+      Turbo Link is a Trademark of Borland International.
+      Clipper is a Trademark of Nantucket.
+      Microsoft Overlay Linker is a Trademark of Microsoft Corp.
+
+      All references in this documentation to trademarks, copyrights,
+      registered names or the like are intended only as a reference and do not
+      contain any inference.
+
+
+
+      Functional Software
+      920 N Washington
+      Edmond  OK  73034
+      (405) 340-1940  (orders only)
+      (405) 341-1893  (FAX)
+      (405) 340-4714  (BBS support)

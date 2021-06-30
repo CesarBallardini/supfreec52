@@ -1,0 +1,68 @@
+
+        This is the shareware version of the Super.Lib Library for
+        Clipper. It is fully functional. See ORDER.DOC to register,
+        which entitles you to FULL SOURCE CODE ,latest version
+        and 24 hour BBS support.
+
+
+        Files on this disk
+
+            README.DOC             This file
+
+            SF.PRG                 Super.Lib demo program source
+            SUPER.LIB              Super.Lib library
+            SUPER5.LIB             Super.Lib library, Clipper 5.0 version
+            SUPER.DOC              General Documentation
+            SUPER.FUN              Full Clipper function description
+            SUPER_C.FUN            Full C/ASM function description
+            ALPHA.FUN              Alphabetical function list
+            SUPPORT.DOC            Support information
+            TODATE.DOC             Changes log (chronological)
+            ORDER.DOC              Order form
+
+            BLCOMP.BAT             Sample batch for BLINKER compile
+            PLCOMP.BAT             Sample batch for PLINK compile
+            TLCOMP.BAT             Sample batch for TLINK compile
+            MSCOMP.BAT             Sample batch for LINK compile
+
+            SUPER.NG               Norton Guide Datafile for SUPER.LIB
+
+
+     Demonstration:
+     ------------------------------------------------------------------------
+     The file SF.PRG is provided as a useable demo of the library functions.
+     SF.PRG is an all-purpose generic data handler.
+
+     Compile SF.PRG   (Clipper SF )
+
+     To link SF.OBJ
+
+
+           Turbo Link (Tlink) :
+           TLINK SF,,,clipper + extend +  super
+
+
+           Microsoft Link    :
+           LINK SF,,,clipper,extend,super /SE:512 /NOE
+
+
+           Plink86           :
+           PLINK86 fi SF lib clipper,super,extend
+
+           BLINKER           :
+           BLINKER fi SF lib super,clipper,extend
+
+        ---------------------------------------------------------
+
+        Try the library for as long as you like. If you decide to
+        incorporate it into your apps, or would like the source
+        code and additional support, send in the registration or
+        call.
+
+        If you use the library, please register it. This is what I
+        do for a living, and your support is appreciated.
+
+
+        Garry Prefontaine
+        Functional Software
+

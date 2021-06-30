@@ -4,3 +4,4 @@
 
 * https://vivaclipper.wordpress.com/tag/superlib/
 
+* http://cd.textfiles.com/goldii/PROGUTIL/SUPERLIB/ en directorio `msdos/`

@@ -1,0 +1,347 @@
+
+ This is a history of changes since release of Super.Lib version 1.50
+
+
+(LATEST CHANGES FIRST)
+DATE            PRG/FILE        CHANGE
+--------------------------------------------------------------------------
+
+06-26-1990   VERSION 1.51
+
+        FORWARD
+        -------
+        Many of the changes in version 1.51 were done to make the
+        library compatible with Clipper 5.0, as well as Clipper S87.
+        Some functions were removed due to calling Clipper internals,
+        which are version dependant and would not work in Clipper 5.0.
+
+        Some functions have been replaced by better functions which
+        perform the same task. Two functions (AUTOSTOR() and AUTOREP())
+        have been removed due to memory fragmentation problems they
+        created.
+
+
+
+        REMOVED
+        -------
+             These have been removed
+             in version 1.51
+
+             S_AUTOS.PRG     AUTOSTOR()    | Memory fragmenter
+             S_AUTOR.PRG     AUTOREP()     | "               "
+             S_MAKEW.PRG     MAKEWIND()    | replaced by MAKEBOX()
+             S_KILLW.PRG     KILLWIND()    | replaced by UNBOX()
+             S_NEWDIR.PRG    NEWDIR()      | replaced by FULLDIR()
+             S_DIRPIK.PRG    DIRPIK()      | replaced by FULLDIR()
+             S_PRINT.PRG     PRNTLST()     | replaced by LISTER()
+             S_PULL.PRG      PULLIT()      | replaced by PULLDN()
+
+             s_stat.c        STAT()        | called Clipper internals
+             push_k.obj      PUSH_KEYS()   | called Clipper internals
+                             POP_KEYS()    | called Clipper internals
+             clrs.c          STANDARD()    | called Clipper internals
+                             ENHANCED()    |   replaced by Clipper
+                             UNSELECTED()  |   functions (see below)
+
+             Tom Rettig Help                 no longer supported.
+             xText help                      no longer supported.
+
+        FIXED/CHANGED SINCE RELEASE OF 1.50
+        -----------------------------------
+
+06-25-1990   S_FGETLE.PRG    New function FGETLEN() gets the length
+                             of a field from the current database.
+
+             S_STAN.PRG      These replace clrs.c, and contain the
+             S_ENHAN.PRG       functions STANDARD(), ENHANCED() and
+             S_UNSL.PRG        UNSELECTED(). Previous method used
+                               Clipper internals.
+
+             S_FULLD.PRG     The FULLDIR() function has been revised
+                             to do all of its work with arrays, skipping
+                             the DIRS.DBF step.
+
+             SUPER_C.FUN     Now contains full listing of all C/ASM
+                             functions.
+
+                             --------------------------------------
+06-24-1990   S_MSG.PRG    ---|   Alright, I was wrong. These have
+             S_PLSW.PRG      |   been changed back to pop up using
+             S_BLDNDX.PRG    |   C_POPCOL as the default color.
+             S_DELET.PRG     |
+             S_FILER.PRG     |   Pass the crow.
+             S_FULLD.PRG     |
+             S_MCHOI.PRG  ---|
+             S_MENUV.PRG     |
+             S_MFLD.PRG      |
+             S_ONER.PRG      |
+             S_POPEX.PRG     |
+             S_SCROLL.PRG    |
+             S_TAG.PRG       |
+             S_MESSYN.PRG ---|
+                             --------------------------------------
+
+06-24-1990   S_OCCUR.PRG     Was allowing MEMO field selection and
+                             crashing
+
+02-24-1990   S_SMAL.PRG      Was incorrectly closing lookup file
+                             when passed a numeric work area.
+
+
+01-23-1990   S_ISLOAD.PRG    New function to determine if <PROC> is
+                             loaded.
+             S_GENED.PRG     Fixed (s'far as I can tell) the memo
+                             field overwrite problem and the alias->field
+                             recognition problem.
+             SF.PRG          Fixes small problem BETA testers were
+                             experiencing with new PULLDOWN() and ESC key
+
+01-22-1990   S_SMAL.PRG      Fixed invisible cursor problem some
+                             people were experiencing. BETA people
+                             get this one for DATAENT() testing.
+             S_LIST.PRG      Sets console back on when done.
+
+                             --------------------------------------
+01-17-1990   S_MSG.PRG    ---|   These were all changed to default
+             S_PLSW.PRG      |   to the CURRENT color rather than
+             S_BLDNDX.PRG    |   the variable C_POPCOL.
+             S_DELET.PRG     |
+             S_FILER.PRG     |   In those cases where you need a
+             S_FULLD.PRG     |   different color than the current
+             S_MCHOI.PRG  ---|   color, simply do something like:
+             S_MENUV.PRG     |
+             S_MFLD.PRG      |    oldcolor = SETCOLOR(m->c_popcol)
+             S_ONER.PRG      |    <popup function call >
+             S_POPEX.PRG     |    SETCOLOR(m->oldcolor)
+             S_SCROLL.PRG    |
+             S_TAG.PRG       |   or pass the color as a parameter
+             S_MESSYN.PRG ---|   where that is an option.
+                             |
+                             |   I have had many requests to do
+                             |   this, so now it is done. (I suppose
+                             |   that now I will have many complaints
+                             |   for having done it!)
+                             --------------------------------------
+
+
+01-11-90     S_MSG.PRG       Optional timeout parameter instead of 'Press
+                             a key'
+
+
+12-26-89     S_CLAB.PRG      CLABEL() validation of label contents
+                             was not working. Jeff Beaver pointed me
+                             in the right direction re: using an array
+                             element in a valid, and now its fixed.
+
+12-25-89     S_SMAL.PRG      Fixed to accomodate varying string length
+                             results and trim to size of box . (i.e.
+                             for passed expression of TRIM(lname) )
+
+             S_MCHOI.PRG     Added optional parameter to pass array
+                             by reference instead of as name of an
+                             array.
+
+12-24-89     S_PULLDN.PRG    Added optional parameter for overiding
+                             menu title column settings.
+
+12-21-89     The documentation has been improved.
+
+             1. Each .PRG now has a header containing '
+                 Function            function name
+                 Action              action performed
+                 Returns             returned value
+                 Category            general category
+                 Syntax              standardized syntax
+                 Description         description of usage
+                 Options             optional parameter usage
+                 Examples            at least 1 example per prg
+                 Notes               general notes
+                 Warnings            warnings, dangers, gotchas
+
+             2. This header is used as the basis for the Norton Guide
+                and datafile, as well as the function
+                lists (SUPER.FUN).
+
+
+
+             SUPER.FUN       |Function list - improved/expanded
+             ALPHA.FUN       |Alphabetical list
+             SUPER.DOC       |General documentation - improved/expanded
+                             (all available in DOCS.EXE)
+
+             SUPER.NG        Much improved and expanded Norton Guides
+                             datafile (available in NORTON.EXE)
+
+
+             -[prg changes]--------------------------------------
+
+             S_MODIS.PRG     Closed an open If statement in top module
+                             Removed reference to AUTOSTOR() AUTOREP()
+             S_PULLDN.PRG    Added m-> to kounter 'i'
+             S_MCHOI.PRG     Added m-> to kounter 'i'
+             S_ABORT.PRG     Added optional parameters for box color
+                             and box dimensions
+             S_BLDARR.PRG    Added option to pass array directly,
+                             avoiding macro expansion
+             S_BLDBF.PRG     Added option to pass array for DBF
+                             description
+
+
+
+11-29-89     S_FILER.PRG     Finally found and fixed FILEREAD()'s inability
+                             to list the last line of a text file.
+11-26-89     S_LIST.PRG      Nick Scallorn pointed out that LISTER() was
+                             not deselecting fields in the same order in
+                             which they had been selected.
+                             This was due to an ommitted ADEL() at line
+                             209 in S_LIST.
+                             There was also a problem with selecting ALL
+                             fields and then trying to DESELECT - due to
+                             the bug in Clipper's ADEL() that will not
+                             allow deletion of the last array element.
+11-24-89     S_SMAL.PRG      Added some parameters - work area/alias,
+                             KEYBOARD expression, beginning/ending record
+                             number, beginning/ending expression.
+             S_GENED.PRG     Took out AUTOSTOR() and AUTOREP() as it has
+                             been pointed out that these tend to fragment
+                             memory. Also enhanced GENED's ability to handle
+                             related fields in the field list array.
+             S_LIST.PRG      As pointed out by Don Trudeau, query matches
+                             were not matching - this was due to SET EXACT
+                             ON within the LISTER() function. EXACT is now
+                             set on only where needed, and QUERY finds what
+                             one might expect it to. (Query really needs a
+                             'begins with')
+
+             SUPER.NG        Just did some touching up. Moved the text
+                             more towards the left side
+
+             SUPER.DOC       Added a section on using RELATED fields with
+                             superfunctions in many-to-one situations.
+
+11-07-89     S_MODIS.PRG     Added field EXISTING to structure extended
+                             dbf to allow marking of existing fields, so
+                             warnings about 'changing existing field *'
+                             would only sound on existing fields
+11-02-89     S_GLOBR.PRG     Was bombing if memo field selected
+                             Removed 'available only in registered..." msg.
+             S_CLAB.PRG      Removed 'available only in registered..." msg.
+             S_INIT.PRG      Removed 'available only in registered..." msg.
+             S_DUP.PRG       Removed 'available only in registered..." msg.
+             S_PRINT.PRG     Removed 'available only in registered..." msg.
+                             Now allows escape from reporting
+                             Erases .999 file on exit
+             S_QUERY.PRG     Removed 'available only in registered..." msg.
+             S_FORML.PRG     Removed 'available only in registered..." msg.
+             S_MESSYN.PRG    Now calls INITSUP()
+             S_PULL.PRG      Handles lowercase
+             S_EDIT.PRG      Handles lowercase
+             S_MODIS.PRG     Does not allow editing numeric field to a
+                             less length (results in numeric overflow
+                             otherwise)
+
+10-19-89     S_FORML.PRG    Made adjustments to allow for left margin
+                            setting when printing (was causing a double
+                            space effect)
+                            Added more checks for ESCAPE while printing
+                            Query should now work properly for formletter
+                            printing
+10-14-89     SF.PRG         Mispelled 'modifying'.
+                            scroll() used to clear bottom box was not
+                            clearing entire box, resulting in the DBF name
+                            remaining even after the dbf had been closed
+                            (i.e. after modify structure).
+             S_HELPM.PRG    Added restore previous color
+             S_EDIT.PRG     Added save/restore cursor status
+             S_DOALL.PRG    Added save/restore cursor status
+
+
+9-28-89      S_INITC.PRG    |All minor changes to handle a bug re: saving
+             S_SETCOL.PRG   |and restoring frame/shadow settings
+             SF.PRG         |
+
+9-21-89      S_INITC.PRG     fixes problem when a 1.50 compile program finds
+                             a 1.42 COLORS.MEM (makebox line 55 etc etc)
+
+             S_DUP.PRG       fixes sporadic problem encountered when
+                             attempting to open same DBF in two areas at
+                             once. NOW REQUIRES RE-OPENING OF INDICES
+                             AFTER A CALL TO THIS FUNCTION.\
+
+             SF.PRG          Re-opens indices after call to DUPLOOK()
+                             (see above)
+
+9-20-89      S_SCROLL.PRG    fixed to only do first letter lookups if
+                             index is character type.
+                             was confused at points about what title to use
+
+9-12-89      S_LIST.PRG      2nd generation of PRNTLST(). Uses more arrays
+                             and less macros. A lot easier to follows.
+                             Its also about 3 K smaller (.obj)
+
+
+9-9-89       SF.PRG          this is what CB is now called. Also handled
+                             setting of controlling index to 1 initially
+
+             S_INITC.PRG     not restoring from COLORS.MEM
+
+             S_PRINT.PRG     if called with 2nd array for DESCRIPTIONS,
+                             and list is saved, was unable to restore
+                             list.
+
+             S_CLAB.PRG      label printing routing now trims out
+                             empty lines from labels (i.e. a 2nd address
+                             line). Also removes multiple spaces from
+                             a line, thus allowing an entry of
+                             FIRSTNAME+' '+MI+' '+LASTNAME
+                             to come out in the form 'GARRY A PREFONTAINE'
+                             without needing a lot of TRIM functions
+                             embedded.
+
+
+9-5-89       S_MODIS.PRG     was allowing zero field dbfs to be saved (?)
+                             was not accepting lowercase AED in edit
+
+             S_LOOKF.PRG     handle LOOOOONG character string correctly
+                             handles MEMO field searches with $ operator
+
+             S_PRINT.PRG     resets nbr to print after print job
+
+             S_CLAB.PRG      lines aligned in Edit Contents
+
+
+8-30-89      S_GLOBR.PRG     was crashing with numeric and date fields
+
+8-30-89      S_FORML.PRG     when calling memoedit() to edit letters
+                             before printing, need to tell it WIDTH,
+                             else double spacing can result.
+
+             S_PULLDN.PRG    final restscreen() was using fixed settings
+                             instead of the new boxdata[] parameters, thus
+                             erasing top of screen in some cases.
+
+8-28-89      S_SMALL.PRG     fixed to only do first letter lookups if
+                             index is character type
+             S_SUMAV.PRG     now removes itself properly if no numeric
+                             fields are found
+             S_FORML.PRG     now does not ask 'Convert to Proper' on
+                             non-character fields.
+                             allows setting of left and top margins
+             S_PRNTF.PRG     paints numeric fields formatted with commas
+             S_CLAB.PRG      used readinsert(.f.) before doing a KEYBOARD
+                             (in Contents editing) to eliminate double entry
+                             new screen design (ala Dennis Levin)
+             S_BLDNDX.PRG    if index string goes beyond one line, now
+                             properly displays it on next line, rather
+                             than overwriting first line
+             CB.PRG          pick_ndx() now allows 6 max indices picked
+                             and then exits
+             S_MENUV.PRG     m-> in from of TITLE variable
+             S_FDATE.PRG     allows passing of date variable as param
+                             but defaults to date()
+             S_SETCOL.PRG    variable SELECT declared private. was causing
+                             crashes.
+             S_GLOBR.PRG     variable VAR_TYPE needed initialization else
+                             crashed when exiting at times
+             S_PULLDN.PRG    cursor status stored and restored on exit
+
